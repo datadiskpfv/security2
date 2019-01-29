@@ -1,5 +1,6 @@
 package uk.co.datadisk.security2.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -40,4 +41,15 @@ public class WebConfiguration extends WebSecurityConfigurerAdapter {
                   .and()
                 .httpBasic();
     }
+
+    // You can also use below for a global configuration
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth
+//                .inMemoryAuthentication()
+//                .passwordEncoder(NoOpPasswordEncoder.getInstance())
+//                .withUser("user")
+//                  .password("password")
+//                  .roles("USER");
+//    }
 }
