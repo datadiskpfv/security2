@@ -16,6 +16,7 @@ import java.net.URL;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @RunWith(SpringRunner.class)
@@ -42,7 +43,7 @@ public class WebConfigurationIntegrationTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertTrue(response
                 .getBody()
-                .contains("Baeldung"));
+                .contains("Spring Security"));
     }
 
     @Test
@@ -54,8 +55,6 @@ public class WebConfigurationIntegrationTest {
                 = restTemplate.getForEntity(base.toString(), String.class);
 
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
-        assertTrue(response
-                .getBody()
-                .contains("Unauthorized"));
+        assertNull(response.getBody());
     }
 }
